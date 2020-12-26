@@ -83,26 +83,26 @@ select REPLACE('ABCDEFADE','A','M')
 -- 求D和d的 ascii码.
 
 -- 将员工名字从M开始截取,显示员工姓名和截取之后名字
-
+select ename,
 -- 将ename中的M替换成AAA,显示替换前后的名字
-
+select replace(ename,'M','AAA') from ename;
 
 -- 将工资保2位小数，显示为美元格式，显示员工编号，姓名，工资
-
+select empno,ename,to_char(round(sal,-2),'$9999.99') from emp;
 -- 将员工工资显示千分位形式，显示员工编号，姓名，工资
-
+select empno,ename,to_number(sal,'$9999.99') from emp;
 -- 将员工工资增加500之后，求比原 工资增加了百分之几，四舍五入保留两位小数，显示员工编号， 名字，工资，百分比（比如：20%）
-
+select empno,ename,sal,concat(to_char(500/(sal+500),'999.99')*100,'%') from emp;
 -- 查询入职日期在1981-5-1到1981-12-31至间的所有员工信息
-
--- 求1981你年下半年入职的员工
+select * from emp where hiredate between '1-5月-81' and '31-12月-81' ;
+-- 求1981年下半年入职的员工
 
 -- 查询当前月有多少天
 
                    
 
 -- 如果有提成，显示成'有提成',没提成，显示'没提成'分别用case和decode
-
+select 
 -- 如果job是PRESIDENT显示成'老板'，job是MANAGER，显示成'经理'，其他显示成员工，分别用
 
   
@@ -192,5 +192,4 @@ select REPLACE('ABCDEFADE','A','M')
 -- 查询部门平均工资大于所有人平均工资的部门信息
 
 -- 查询没有员工的部门信息
-
 
